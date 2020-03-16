@@ -1,2 +1,0 @@
-# adajumpstart
-Ada Jumpstart  Exercises
