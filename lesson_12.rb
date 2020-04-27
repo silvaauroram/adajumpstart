@@ -49,3 +49,68 @@ end
 average = total / inputnum
 
 puts "The average of all the values in the array is #{average}."
+
+# ----------------------------------------------
+# Student Account Generator 
+puts "Student Account Generator"
+
+# array with student names student ID numbers student email addresses
+namelist = []
+idlist = []
+emaillist = []
+splitnamelist = []
+firstnamelist = []
+lastnamelist = []
+
+# times loop to enter student names first & last in uppercase 
+5.times do |x|
+    puts "Please enter a first and last name"
+    name = gets.chomp.upcase # uppercase
+    namelist << name 
+end 
+
+# times loop to generate random student id number 
+5.times do |x|
+    id = rand(111111..999999) # rand generates numbers between those integers
+    id = id.to_s # returns string
+    idlist << id
+end
+# times loop to generate student email addresses: (first initial)+(last name)+ last 3 of ID@adadevelopers.org
+# split name into separate first and last name elements 
+(0...5).each do |x| 
+    tempname = namelist[x]
+    tempname = tempname.upcase
+    splitname = tempname.split(" ")
+    splitnamelist << splitname
+end
+
+#appends first name to array
+(0...5).each do |x|
+    tempname = splitnamelist[x][0]
+    firstnamelist << tempname
+end 
+# appends last name to array
+(0...5).each do |x|
+    tempname = splitnamelist[x][1]
+    lastnamelist << tempname
+end
+
+# combine elements into email address 
+5.times do |x|
+    firstname = firstnamelist[x]
+    lastname = lastnamelist[x]
+    tempid = idlist[x]
+    tempid = tempid[3..5] #last three digits of id #
+    email = firstname[0] + lastname + tempid + "@adadevelopersacademy.org"
+    emaillist << email
+end
+
+puts 
+puts
+# print out all students names, ID, $ email addresses in parallel
+puts "Email List: #{emaillist}"
+
+(0...5).each do |x|
+    puts "#{firstnamelist[x]} #{lastnamelist[x]} #{idlist[x]} #{emaillist[x]}"
+end
+
